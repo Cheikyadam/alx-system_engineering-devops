@@ -1,1 +1,1 @@
-shell directory projects
+Pour les projets shell
