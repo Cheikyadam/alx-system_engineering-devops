@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -da */ |wc -l
+ls -lRa |grep ^d | wc -l
