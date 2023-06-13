@@ -2,3 +2,5 @@ Hello world
 Coding is so amazing
 Enjoying it
 Enjoying it
+echo 'Replace all characters `A`
+and `c` from input to `Z` and `e`.
