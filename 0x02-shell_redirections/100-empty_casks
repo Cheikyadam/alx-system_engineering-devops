@@ -1,2 +1,2 @@
 #!/bin/bash
-find -type f -size 0b | cut -d "/" -f 2
+find . -empty -printf  "%f\n"
