@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#read and cut
+passwd="/etc/passwd"
+
+if [ -e "$passwd" ]; 
+then
+    while IFS= read -r line
+do
+        newline=$(echo "$line" | cut -d ':' -f1,3,6)
+	echo "$newline"
+    done < "$passwd"
+else
+    echo "Error"
+fi
