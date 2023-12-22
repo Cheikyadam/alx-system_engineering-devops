@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#printing 'Best school' ten times using while loop
+((i = 1))
+while ((i <= 100))
+do
+	((three = i%3))
+	((five = i%5))
+	if ((  (three==0) && (five==0) ))
+	then
+		echo "FizzBuzz"
+	elif ((three==0))
+	then
+		echo "Fizz"
+	elif ((five==0))
+	then
+		echo "Buzz"
+	else
+		echo "$i"
+	fi
+	((i += 1))	
+done
