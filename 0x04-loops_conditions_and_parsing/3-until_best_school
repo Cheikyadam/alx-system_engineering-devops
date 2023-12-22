@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#printing 'Best school' ten times using while loop
+#printing 'Best school' ten times using until loop
 i=0
 until ((i==10))
 do
