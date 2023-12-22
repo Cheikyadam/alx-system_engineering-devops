@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#print Best School ten times
+list=$(ls)
+for file in $list
+do
+	echo "$file"
+done
