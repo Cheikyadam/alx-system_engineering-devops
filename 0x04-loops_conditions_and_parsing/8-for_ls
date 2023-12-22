@@ -3,5 +3,6 @@
 list=$(ls)
 for file in $list
 do
-	echo $(basename $file)
+	filename=$(echo "$file" | cut -d '-' -f2)
+	echo "$filename"
 done
