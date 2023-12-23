@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#kill command
+pid=$(ps -eo pid,command)
+pid=$(echo "$pid" |grep "bash" | grep "./7-highlander" | cut -d ' ' -f2)
+if [ -n "$pid" ]
+then
+	kill -9 $pid
+fi
