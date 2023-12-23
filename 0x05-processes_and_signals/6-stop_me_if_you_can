@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-#kill command
+#signal
 pid=$(ps -eo pid,command)
+
 pid=$(echo "$pid" |grep "bash" | grep "./4-to_infinity_and_beyond" | cut -d ' ' -f2)
 if [ -n "$pid" ]
 then
-	kill "$pid"
+	pkill -19 -P $pid
 fi
