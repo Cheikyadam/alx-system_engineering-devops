@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#####100
+pid=$(ps -eo pid,command)
+pid=$(echo "$pid" |grep "bash" | grep "./7-highlander" | cut -d ' ' -f2)
+echo "$pid" > "/var/run/myscript.pid"
+
+catch_singterm()
+{
+	echo "I hate the kill command"
+	rm "/var/run/myscript.pid"
+	exit 1
+}
+trap catch_singterm SIGTERM
+
+catch_singint()
+{
+        echo "Y U no love me?!"
+}
+trap catch_singterm SIGINT
+
+catch_singquit()
+{
+	rm "/var/run/myscript.pid"
+	exit 1
+}
+trap catch_singquit SIGQUIT
+
+while ((1))
+do
+        echo "To infinity and beyond"
+done
