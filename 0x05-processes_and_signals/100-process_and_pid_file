@@ -16,7 +16,7 @@ catch_singint()
 {
         echo "Y U no love me?!"
 }
-trap catch_singterm SIGINT
+trap catch_singint SIGINT
 
 catch_singquit()
 {
