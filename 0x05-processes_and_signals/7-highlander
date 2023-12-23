@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#invincible
+
+catch_singterm()
+{
+	echo "I am invincible!!!"
+}
+trap catch_singterm SIGTERM
+while ((1))
+do
+	echo "To infinity and beyond"
+	sleep 2s
+done
