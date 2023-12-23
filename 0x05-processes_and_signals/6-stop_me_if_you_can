@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 #signal
-pid=$(ps -eo pid,command)
+pkill "bash"
+#pid=$(ps -eo pid,command)
 
-pid=$(echo "$pid" |grep "bash" | grep "./4-to_infinity_and_beyond" | cut -d ' ' -f2)
-if [ -n "$pid" ]
-then
-	pkill -19 -P $pid
-fi
+#pid=$(echo "$pid" |grep "bash" | grep "./4-to_infinity_and_beyond" | cut -d ' ' -f2)
+#if [ -n "$pid" ]
+#then
+#	pkill -2 -P $pid
+#	echo "send"
+#fi
