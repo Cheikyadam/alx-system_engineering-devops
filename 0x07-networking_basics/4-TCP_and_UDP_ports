@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#UDP TCP PORTS
+netstat -lntp -lxp --unix
