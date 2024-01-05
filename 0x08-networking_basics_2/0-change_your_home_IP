@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #change home
 new="127.0.0.2"
-file="/etc/hosts"
-sed -i "s/^127.0.0.1.*/$new\tlocalhost/" "$file"
+cp /etc/hosts ~/hosts.new
+sudo sed -i "s/^127.0.0.1.*/$new\tlocalhost/" ~/hosts.new
+cp -f ~/hosts.new /etc/hosts
 echo "8.8.8.8	facebook.com" >> /etc/hosts
