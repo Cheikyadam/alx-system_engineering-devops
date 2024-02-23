@@ -1,6 +1,6 @@
 # Installing a package with puppet using pip3
 
 package { 'Flask':
-  ensure   =>  '2.1.0',
+  ensure   =>  'latest',
   provider =>  'pip3'
   }
