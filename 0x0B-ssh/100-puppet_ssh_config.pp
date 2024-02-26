@@ -1,6 +1,6 @@
 # To config ~/.ssh/config
 
-$my_path =  '/root/.ssh/config'
+$my_path =  ' /etc/ssh/ssh_config'
 
 file {'config':
   ensure  =>  present,
