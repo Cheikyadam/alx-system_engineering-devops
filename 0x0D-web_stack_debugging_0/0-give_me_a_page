@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 #Starting apache2
 
-docker run -p 8080:80 -d -it holbertonschool/265-0
-id=$(docker ps | grep  holbertonschool/265-0 | cut -d ' ' -f1)
-docker exec -it "$id" sudo service apache2 start
-docker exec -it "$id" sudo service apache2 status
+#docker run -p 8080:80 -d -it holbertonschool/265-0
+#id=$(docker ps | grep  holbertonschool/265-0 | cut -d ' ' -f1)
+#docker exec -it "$id" sudo service apache2 start
+#docker exec -it "$id" sudo service apache2 status
+sudo service apache2 start
+sudo service apache2 status
