@@ -21,10 +21,10 @@ exec {'index':
 
 
 $my_path =  '/etc/nginx/sites-available/default'
-my_line =  "server_name _;\n\n\tlocation \/redirect_me {\n\t\treturn 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n\t}"
+$my_line =  "server_name _;\n\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}"
 file_line {'config_ident':
   ensure =>  present,
   path   =>  $my_path,
   match  =>  '*server_name _;',
-  line   =>  $my_line 
+  line   =>  $my_line
 }
