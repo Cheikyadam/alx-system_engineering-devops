@@ -3,4 +3,4 @@
 
 docker run -p 8080:80 -d -it holbertonschool/265-0
 id=$(docker ps | grep  holbertonschool/265-0 | cut -d ' ' -f1)
-docker exec -i $id sudo service apache2 start
+docker exec -i "$id" sudo service apache2 start
