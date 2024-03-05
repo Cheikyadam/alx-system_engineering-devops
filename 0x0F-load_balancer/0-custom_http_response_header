@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Configurations
+
+apt update
+apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+
+new="server_name _;\n\n\tlocation \/redirect_me {\n\t\treturn 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n\t}"
+sudo sed -i "s/server_name _\;/$new/" /etc/nginx/sites-available/default
+
+default_page="server_name _;\n\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html\/;\n\t\tinternal;\n\t}"
+sudo sed -i "s/server_name _\;/$default_page/" /etc/nginx/sites-available/default
+
+value="server_name _;\n\n\tadd_header X-Served-By \$hostname;\n"
+sudo sed -i "s/server_name _\;/$value/" /etc/nginx/sites-available/default
