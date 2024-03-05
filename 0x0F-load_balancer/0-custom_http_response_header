@@ -14,3 +14,5 @@ sudo sed -i "s/server_name _\;/$default_page/" /etc/nginx/sites-available/defaul
 
 value="server_name _;\n\n\tadd_header X-Served-By \$hostname;\n"
 sudo sed -i "s/server_name _\;/$value/" /etc/nginx/sites-available/default
+
+sudo service nginx reload
