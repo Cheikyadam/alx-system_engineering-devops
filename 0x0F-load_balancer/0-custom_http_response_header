@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Configurations
 
-apt update
-apt-get -y install nginx
-ufw allow 'Nginx HTTP'
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
+sudo apt update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
 
 new="server_name _;\n\n\tlocation \/redirect_me {\n\t\treturn 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n\t}"
 sudo sed -i "s/server_name _\;/$new/" /etc/nginx/sites-available/default
@@ -15,4 +15,4 @@ sudo sed -i "s/server_name _\;/$default_page/" /etc/nginx/sites-available/defaul
 value="server_name _;\n\n\tadd_header X-Served-By \$hostname;\n"
 sudo sed -i "s/server_name _\;/$value/" /etc/nginx/sites-available/default
 
-sudo service nginx reload
+sudo service nginx restart
