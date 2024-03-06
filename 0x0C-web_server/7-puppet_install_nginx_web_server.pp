@@ -8,14 +8,16 @@ package {'Nginx':
   }
 
 exec {'ufw':
-  command => 'sudo /usr/sbin/ufw allow "Nginx HTTP"',
-  path    => '/usr/sbin/'
+  command => '/usr/sbin/ufw allow "Nginx HTTP"',
+  path    => '/usr/sbin/',
+  sudo    => true
   }
 
 exec {'index':
-  command => 'sudo /usr/bin/echo "Hello World!" > /var/www/html/index.nginx-debian.html',
+  command => '/usr/bin/echo "Hello World!" > /var/www/html/index.nginx-debian.html',
   #environment => 'HOME=/root',
-  path    => '/usr/bin'
+  path    => '/usr/bin',
+  sudo    => true
   }
 
 
@@ -29,6 +31,7 @@ file_line {'config_ident':
 }
 
 exec {'restart':
-  command => 'sudo /usr/sbin/service nginx restart',
-  path    => '/usr/sbin/'
+  command => '/usr/sbin/service nginx restart',
+  path    => '/usr/sbin/',
+  sudo    => true
   }
