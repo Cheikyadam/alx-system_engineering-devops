@@ -1,4 +1,4 @@
-# running script Nginx
+ng script Nginx
 # installation
 
 include stdlib
@@ -10,14 +10,14 @@ package {'nginx':
 exec {'ufw':
   command => '/usr/sbin/ufw allow "Nginx HTTP"',
   path    => '/usr/sbin/',
-  sudo    => true
+  #timeout => 0,
+  user    => root,
   }
 
 exec {'index':
-  command => '/usr/bin/echo "Hello World!" > /var/www/html/index.nginx-debian.html',
-  #environment => 'HOME=/root',
+  command => "/usr/bin/echo 'Hello World!' > /var/www/html/index.nginx-debian.html",
   path    => '/usr/bin',
-  sudo    => true
+  user    => root
   }
 
 
@@ -27,11 +27,13 @@ file_line {'config_ident':
   ensure =>  present,
   path   =>  $my_path,
   match  =>  '*server_name _;',
-  line   =>  $my_line
+  line   =>  $my_line,
 }
 
 exec {'restart':
   command => '/usr/sbin/service nginx restart',
   path    => '/usr/sbin/',
-  sudo    => true
+  timeout => 0,
+  user    => root
+  #sudo    => true
   }
