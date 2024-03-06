@@ -7,6 +7,12 @@ package {'nginx':
   ensure => 'installed'
   }
 
+service { 'nginx':
+  ensure  => 'running',
+  enable  => true,
+  require => Package['nginx'],
+}
+
 exec {'ufw':
   command => '/usr/sbin/ufw allow "Nginx HTTP"',
   path    => '/usr/sbin/',
