@@ -3,7 +3,7 @@
 
 include stdlib
 
-package {'Nginx':
+package {'nginx':
   ensure => 'installed'
   }
 
