@@ -4,3 +4,24 @@
 sudo apt update
 sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
+sudo service nginx start
+nginx_conf="/etc/nginx/nginx.conf"
+ip_addresses=$(ip -4 addr show | grep inet | awk '{print $2}' | cut -d'/' -f1)
+
+# Configure Nginx to listen on port 80 for each IP
+for ip in $ip_addresses; do
+    # Add server block configuration to Nginx
+    echo "
+server {
+    listen 80;
+    server_name $ip;
+
+    # Additional configuration if needed
+
+    location / {
+        # Your website configuration
+    }
+}
+" >> "$nginx_conf"
+done
+sudo nginx -s reload
