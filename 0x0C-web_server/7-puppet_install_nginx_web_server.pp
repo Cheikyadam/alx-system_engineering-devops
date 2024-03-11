@@ -1,22 +1,29 @@
-# running script Nginx
+ng script Nginx
+# installation
 
-include ufw
 include stdlib
 
-package {'Nginx':
+package {'nginx':
   ensure => 'installed'
   }
 
-ufw::rule {'allow_http':
-  direction => 'in',
-  port      => 80,
-  action    => 'allow',
+service { 'nginx':
+  ensure  => 'running',
+  enable  => true,
+  require => Package['nginx'],
 }
 
+exec {'ufw':
+  command => '/usr/sbin/ufw allow "Nginx HTTP"',
+  path    => '/usr/sbin/',
+  #timeout => 0,
+  user    => root,
+  }
+
 exec {'index':
-  command => '/usr/bin/echo "Hello World!" > /var/www/html/index.nginx-debian.html',
-  #environment => 'HOME=/root',
-  path    => '/usr/bin'
+  command => "/usr/bin/echo 'Hello World!' > /var/www/html/index.nginx-debian.html",
+  path    => '/usr/bin',
+  user    => root
   }
 
 
@@ -26,5 +33,13 @@ file_line {'config_ident':
   ensure =>  present,
   path   =>  $my_path,
   match  =>  '*server_name _;',
-  line   =>  $my_line
+  line   =>  $my_line,
 }
+
+exec {'restart':
+  command => '/usr/sbin/service nginx restart',
+  path    => '/usr/sbin/',
+  timeout => 0,
+  user    => root
+  #sudo    => true
+  }
