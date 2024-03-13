@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #debugging
-sudo rm /etc/nginx/nginx.conf
-sudo rm -rf /etc/nginx/
-sudo apt purge nginx
+sudo apt update
+sudo apt-get -y install nginx
+new="server {\n\n\tlocation \/redirect_me {\n\t\treturn 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n\t}"
+sudo sed -i "s/server {\n/$new/" /etc/nginx/sites-available/default
 sudo service nginx restart
