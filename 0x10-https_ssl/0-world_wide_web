@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#Func in bash and dig commands
+
+funct () {
+	name="$2.$1"
+	add=$(dig "$name" | grep -A1 'ANSWER SECTION:' | awk '{print $5}')
+	string="The subdomain $2 is a A record and points to $add"
+	echo $string
+}
+
+if [ "$2" ]; then
+	funct "$1" "$2"
+else
+	funct "$1" www
+	funct "$1" lb-01
+	funct "$1" web-01
+	funct "$1" web-02
+fi
