@@ -3,5 +3,5 @@
 sudo apt update
 sudo apt-get -y install nginx
 new="server {\n\tlisten *:80 default_server;}"
-sudo sed -i "s/server \n\tlisten* {\n/$new/" /etc/nginx/sites-available/default
+sudo sed -i "s/server {/$new/" /etc/nginx/sites-available/default
 sudo service nginx restart
