@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#whoami
+
+username=$1
+
+if id "$username" &>/dev/null; then
+	echo "$username"
+fi
