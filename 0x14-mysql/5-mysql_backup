@@ -3,4 +3,4 @@
 mysqldump --user="root" --password="$1"  --all-databases > backup.sql
 current_date=$(date +"%d-%m-%Y")
 name="$current_date.tar.gz"
-tar -cvf "$name" backup.sql
+tar -czvf "$name" backup.sql
