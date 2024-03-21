@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#nginx user
+
+if ! id "nginx" &>/dev/null; then
+    sudo adduser -p '*' nginx
+fi
+new="user nginx;"
+sudo sed -i "/^user/ c\\$new" /etc/nginx/nginx.conf
+sudo chown -R nginx:nginx /var/log/nginx
+sudo chown -R nginx:nginx /var/lib/nginx
+sudo nginx service restart
