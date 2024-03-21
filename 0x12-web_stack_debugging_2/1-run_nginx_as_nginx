@@ -1,11 +1,30 @@
 #!/usr/bin/env bash
 #nginx user
 
-if ! id "nginx" &>/dev/null; then
-    sudo adduser -p '*' nginx
-fi
+#if ! id "nginx" &>/dev/null; then
+   # sudo useradd -p '*' nginx
+#fi
+sudo service nginx stop
+sudo userdel nginx;
 new="user nginx;"
 sudo sed -i "/^user/ c\\$new" /etc/nginx/nginx.conf
+#sudo chown -R nginx:nginx /var/log/nginx 
+#sudo chown -R nginx:nginx /var/lib/nginx
+#chown -R nginx:nginx /etc/nginx/conf.d
+#sudo chown -R nginx:nginx /usr/share/nginx/
+#touch /var/run/nginx.pid && chown -R nginx:nginx /var/run/nginx.pid
+#USER nginx
+#EXPOSE <PORT_NUMBER>
+#CMD ["nginx", "-g", "daemon off;"]
+sudo mkdir -p /var/cache/nginx
+sudo groupadd nginx
+sudo useradd -r -g nginx -s /sbin/nologin -d /var/cache/nginx -M nginx
+sudo chown -R nginx:nginx /var/log/nginx
+sudo chown -R nginx:nginx /var/cache/nginx
+sudo chown -R nginx:nginx /var/lib/nginx
 sudo chown -R nginx:nginx /var/log/nginx
 sudo chown -R nginx:nginx /var/lib/nginx
+chown -R nginx:nginx /etc/nginx/conf.d
+sudo chown -R nginx:nginx /usr/share/nginx/
+touch /var/run/nginx.pid && chown -R nginx:nginx /var/run/nginx.pid
 sudo service nginx  restart
