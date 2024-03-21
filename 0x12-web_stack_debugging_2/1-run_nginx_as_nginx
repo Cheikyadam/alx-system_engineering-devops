@@ -8,4 +8,4 @@ new="user nginx;"
 sudo sed -i "/^user/ c\\$new" /etc/nginx/nginx.conf
 sudo chown -R nginx:nginx /var/log/nginx
 sudo chown -R nginx:nginx /var/lib/nginx
-sudo nginx service restart
+sudo service nginx  restart
