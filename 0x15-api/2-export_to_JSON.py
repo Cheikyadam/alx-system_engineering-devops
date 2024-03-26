@@ -17,11 +17,11 @@ if __name__ == '__main__':
         allTodos = r.json()
         todos = []
         for task in allTodos:
-                todo = {}
-                todo['task'] = task.get('title')
-                todo['completed'] = task.get('completed')
-                todo['username'] = username
-                todos.append(todo)
+            todo = {}
+            todo['task'] = task.get('title')
+            todo['completed'] = task.get('completed')
+            todo['username'] = username
+            todos.append(todo)
         alltasks[userId] = todos
         filename = f"{userId}.json"
         with open(filename, 'w') as fjson:
