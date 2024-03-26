@@ -7,25 +7,24 @@ import sys
 
 if __name__ == '__main__':
     try:
-        allemployees = {}
-        url = f"https://jsonplaceholder.typicode.com/users/"
+        userId = int(sys.argv[1])
+        alltasks = {}
+        url = f"https://jsonplaceholder.typicode.com/users/{userId}"
         r = requests.get(url)
-        allUsers = r.json()
-        for user in allUsers:
-            userId = user.get('id')
-            url = f"https://jsonplaceholder.typicode.com/users/{userId}/todos"
-            r = requests.get(url)
-            allTodos = r.json()
-            todos = []
-            for task in allTodos:
+        username = r.json().get('username')
+        url = f"https://jsonplaceholder.typicode.com/users/{userId}/todos"
+        r = requests.get(url)
+        allTodos = r.json()
+        todos = []
+        for task in allTodos:
                 todo = {}
-                todo['username'] = user.get('username')
                 todo['task'] = task.get('title')
                 todo['completed'] = task.get('completed')
+                todo['username'] = username
                 todos.append(todo)
-            allemployees[userId] = todos
-        filename = "todo_all_employees.json"
+        alltasks[userId] = todos
+        filename = f"{userId}.json"
         with open(filename, 'w') as fjson:
-            json.dump(allemployees, fjson)
+            json.dump(alltasks, fjson)
     except Exception as e:
         print(e)
