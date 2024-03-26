@@ -16,10 +16,10 @@ if __name__ == '__main__':
         user = r.json().get('username')
         filename = f"{userId}.csv"
         with open(filename, mode='w', newline='') as fcsv:
-            writer = csv.writer(fcsv)
+            writer = csv.writer(fcsv, escapechar='\\', quoting=csv.QUOTE_ALL)
             for task in r_json:
                 line = []
-                line.append(str(userId))
+                line.append(f"{userId}")
                 line.append(f"{user}")
                 line.append(f"{task.get('completed')}")
                 line.append(f"{task.get('title')}")
