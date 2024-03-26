@@ -13,7 +13,7 @@ if __name__ == '__main__':
         r_json = r.json()
         url = f"https://jsonplaceholder.typicode.com/users/{userId}"
         r = requests.get(url)
-        user = r.json().get('name')
+        user = r.json().get('username')
         filename = f"{userId}.csv"
         with open(filename, mode='w', newline='') as fcsv:
             writer = csv.writer(fcsv)
