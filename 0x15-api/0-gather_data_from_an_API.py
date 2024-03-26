@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """API Gather info"""
-import sys
 import requests
+import sys
 
 
 if __name__ == '__main__':
@@ -21,7 +21,7 @@ if __name__ == '__main__':
             url = f"https://jsonplaceholder.typicode.com/users/{userId}"
             r = requests.get(url)
             user = r.json().get('name')
-            print(f"Employee {user} is done with tasks({completed}/{total})")
+            print(f"Employee {user} is done with tasks({completed}/{total}):")
             for task in r_json:
                 if task.get('completed') is True:
                     print(f"\t {task.get('title')}")
