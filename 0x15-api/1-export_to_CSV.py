@@ -19,10 +19,10 @@ if __name__ == '__main__':
             writer = csv.writer(fcsv)
             for task in r_json:
                 line = []
-                line.append(userId)
-                line.append(user)
-                line.append(task.get('completed'))
-                line.append(task.get('title'))
+                line.append(str(userId))
+                line.append(f"{user}")
+                line.append(f"{task.get('completed')}")
+                line.append(f"{task.get('title')}")
                 writer.writerow(line)
     except Exception as e:
         print(e)
