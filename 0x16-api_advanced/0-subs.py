@@ -8,12 +8,10 @@ def number_of_subscribers(subreddit):
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
     response = requests.get(url, allow_redirects=False)
     if response.status_code == 200:
-        return response.json().get('data').get('subscribers')
-        # print("La requête a réussi.")
+        data = response.json()
+        total = data['data']['subscribers']
+        return total
     elif response.status_code == 301 or response.status_code == 302:
-        # print("Redirection détectée mais non suivie.")
         return 0
     else:
-        # print("La requête a échoué avec le code de statut:",
-        # response.status_code)
         return 0
