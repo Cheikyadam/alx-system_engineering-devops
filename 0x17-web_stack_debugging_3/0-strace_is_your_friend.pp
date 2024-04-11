@@ -1,9 +1,6 @@
-#To correct class-wp-locale.phpp
-include stdlib
+#replacing .phpp with .php
 
-file_line { 'replace_class-wp-locale.phpp':
-  ensure => present,
-  line   => 'require_once( ABSPATH . WPINC . \'/class-wp-locale.php\' );',
-  match  => '*class-wp-locale.phpp*',
-  path   => '/var/www/html/wp-settings.php',
+exec { 'replace_class-wp-locale.phpp':
+  command => "sed -i 's/class-wp-locale.phpp/class-wp-locale.php/g' /var/www/html/wp-settings.php",
+  path    => ['/bin', '/usr/bin'],
 }
