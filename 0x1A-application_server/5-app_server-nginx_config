@@ -3,6 +3,12 @@ server {
     listen 80;
     server_name 3.90.70.250 127.0.0.1;
 
+    root /home/ubuntu/AirBnB_clone_v4/web_dynamic;
+
+    location /static/ {
+        alias /home/ubuntu/AirBnB_clone_v4/web_dynamic/web_dynamic/static/;
+    }
+
     location / {
        proxy_pass http://0.0.0.0:5003;
     }
@@ -20,4 +26,3 @@ server {
 }
 
 }
-~                  
